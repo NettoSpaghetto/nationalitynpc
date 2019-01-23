@@ -45,10 +45,18 @@ hook.Add("PlayerSpawn", "NationalitySpawnOnRightSide", spawnOnRightSide)
 
 --Handle saving and loading of slots
 hook.Add("PlayerSay", "HandleBDONCommands" , function(ply, text)
-	if string.sub(string.lower(text), 1, 12) == "/addspawnmex" then
+	if string.sub(string.lower(text), 1, 12) == "/addmexspawn" then
 		if ply:IsSuperAdmin() then
-			SaveDoubleOrNothingSlots()
-			ply:ChatPrint("A mexican spawn has been added for the map "..game.GetMap().."!")
+			addMexSpawn(ply)
+			ply:ChatPrint("A Mexican spawn has been added for the map "..game.GetMap().."!")
+		else
+			ply:ChatPrint("You do not have permission to perform this action.")
+		end
+	end
+	if string.sub(string.lower(text), 1, 11) == "/addamspawn" then
+		if ply:IsSuperAdmin() then
+			addAmSpawn(ply)
+			ply:ChatPrint("An American spawn has been added for the map "..game.GetMap().."!")
 		else
 			ply:ChatPrint("You do not have permission to perform this action.")
 		end
