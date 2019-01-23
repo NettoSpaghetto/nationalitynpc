@@ -61,5 +61,13 @@ hook.Add("PlayerSay", "HandleBDONCommands" , function(ply, text)
 			ply:ChatPrint("You do not have permission to perform this action.")
 		end
 	end
+	if string.sub(string.lower(text), 1, 14) == "/savenatspawns" then
+		if ply:IsSuperAdmin() then
+			saveSpawns()
+			ply:ChatPrint("You have successfully saved spawns for the map "..game.GetMap().."!")
+		else
+			ply:ChatPrint("You do not have permission to perform this action.")
+		end
+	end
 end)
 
