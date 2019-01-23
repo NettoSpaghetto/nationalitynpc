@@ -12,6 +12,11 @@ local function addAmSpawn(ply)
 	table.insert(nation.am, {pos = ply:GetPos()})
 end
 
+local function saveSpawns()
+    file.Write("nationality/"..game.GetMap().."_mex.txt", util.TableToJSON(nation.mex))
+    file.Write("nationality/"..game.GetMap().."_am.txt", util.TableToJSON(nation.am))
+end
+
 local function nationalitySpawn(ply)
     local userDataFile = "nationality/" ..  ply:SteamID64() .. ".txt" 
     local userDataContents = file.Read(userDataFile, "DATA")
