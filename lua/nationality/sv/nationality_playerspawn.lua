@@ -2,7 +2,14 @@ NATION_AM = 0
 NATION_MEX = 1
 local nation = {}
 
-local function SaveNationSpawns()
+local function addMexSpawn(ply)
+	local nation.mex = {}
+	table.insert(nation.mex, {pos = ply:GetPos()})
+end
+
+local function addAmSpawn(ply)
+	local nation.am = {}
+	table.insert(nation.am, {pos = ply:GetPos()})
 end
 
 local function nationalitySpawn(ply)
@@ -39,11 +46,11 @@ hook.Add("PlayerSpawn", "NationalitySpawnOnRightSide", spawnOnRightSide)
 --Handle saving and loading of slots
 hook.Add("PlayerSay", "HandleBDONCommands" , function(ply, text)
 	if string.sub(string.lower(text), 1, 12) == "/addspawnmex" then
-		if table.HasValue(BDON_CONFIG.AdminRanks, ply:GetUserGroup()) then
+		if ply:IsSuperAdmin() then
 			SaveDoubleOrNothingSlots()
-			ply:ChatPrint("Double Or Nothing Slot Machines have been saved for the map "..game.GetMap().."!")
+			ply:ChatPrint("A mexican spawn has been added for the map "..game.GetMap().."!")
 		else
-			ply:ChatPrint("You do not have permission to perform this action, please contact an admin.")
+			ply:ChatPrint("You do not have permission to perform this action.")
 		end
 	end
 end)
