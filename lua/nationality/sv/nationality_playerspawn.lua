@@ -3,12 +3,12 @@ NATION_MEX = 1
 local nation = {}
 
 local function addMexSpawn(ply)
-	local nation.mex = {}
+	nation.mex = {}
 	table.insert(nation.mex, {pos = ply:GetPos()})
 end
 
 local function addAmSpawn(ply)
-	local nation.am = {}
+	nation.am = {}
 	table.insert(nation.am, {pos = ply:GetPos()})
 end
 
