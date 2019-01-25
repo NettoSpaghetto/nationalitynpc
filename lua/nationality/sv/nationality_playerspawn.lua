@@ -32,9 +32,9 @@ local function nationalitySpawn(ply)
     if file.Exists( userDataFile, "DATA" ) then
         if ply:IsValid() and ply:IsPlayer() then
             if tonumber(userDataContents, 2)  == NATION_MEX then
-                timer.Simple(0.5, function() ply:SetPos( mexicanSpawn[math.random(1, table.Count( mexicanSpawn ) ) ] ) end )
+                timer.Simple(0.5, function() ply:SetPos( mexicanSpawn[math.random( table.Count( mexicanSpawn ) ) ] ) end )
             else
-                timer.Simple(0.5, function() ply:SetPos( americanSpawn[math.random(1, table.Count( americanSpawn ) ) ] ) end )
+                timer.Simple(0.5, function() ply:SetPos( americanSpawn[math.random( table.Count( americanSpawn ) ) ] ) end )
             end
         end
     end
