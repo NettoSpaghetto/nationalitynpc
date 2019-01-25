@@ -48,9 +48,9 @@ hook.Add("PlayerInitialSpawn", "NationalityCheck", nationalitySpawn)
 local function spawnOnRightSide(ply)
     if ply:IsValid() then
         if ply:GetNWFloat("Nation", NATION_MEX) == NATION_MEX then
-            timer.Simple(0.2, function() ply:SetPos( mexicanSpawn[math.random(#mexicanSpawn)] ) end )
+            timer.Simple(0.2, function() ply:SetPos( mexicanSpawn[math.random(#mexicanSpawn)].pos ) end )
         elseif ply:GetNWFloat("Nation", NATION_AM) == NATION_AM then
-            timer.Simple(0.2, function() ply:SetPos( americanSpawn[math.random(#americanSpawn)] ) end )
+            timer.Simple(0.2, function() ply:SetPos( americanSpawn[math.random(#americanSpawn)].pos ) end )
         end
     end
 end
