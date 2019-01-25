@@ -20,11 +20,11 @@ end
 local function nationalitySpawn(ply)
     local userDataFile = "nationality/" ..  ply:SteamID64() .. ".txt" 
     local userDataContents = file.Read(userDataFile, "DATA")
-    local mexicanSpawn = util.JSONToTable("nationality/"..game.GetMap().."_mex.txt")
-    local americanSpawn = util.JSONToTable("nationality/"..game.GetMap().."_am.txt")
+    local mexicanSpawn = util.JSONToTable( "nationality/" .. game.GetMap() .. "_mex.txt" )
+    local americanSpawn = util.JSONToTable( "nationality/" .. game.GetMap() .. "_am.txt" )
 
-    if not file.Exists( "nationality/"..game.GetMap().."_mex.txt", "DATA" ) then return end
-    if not file.Exists( "nationality/"..game.GetMap().."_am.txt", "DATA" ) then return end
+    if not file.Exists( " nationality/" .. game.GetMap() .. "_mex.txt", "DATA" ) then return end
+    if not file.Exists( " nationality/" .. game.GetMap() .. "_am.txt", "DATA" ) then return end
 
     if ply:IsValid() and ply:IsPlayer() then
         ply:SetNWFloat("Nation", userDataContents)
@@ -32,9 +32,9 @@ local function nationalitySpawn(ply)
     if file.Exists( userDataFile, "DATA" ) then
         if ply:IsValid() and ply:IsPlayer() then
             if tonumber(userDataContents, 2)  == NATION_MEX then
-                timer.Simple(0.5, function() ply:SetPos( mexicanSpawn[math.random(1, #mexicanSpawn)] ) end )
+                timer.Simple(0.5, function() ply:SetPos( mexicanSpawn[math.random(1, table.Count( mexicanSpawn ) ) ] ) end )
             else
-                timer.Simple(0.5, function() ply:SetPos( americanSpawn[math.random(1, #americanSpawn)] ) end )
+                timer.Simple(0.5, function() ply:SetPos( americanSpawn[math.random(1, table.Count( americanSpawn ) ) ] ) end )
             end
         end
     end
