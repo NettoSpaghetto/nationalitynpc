@@ -23,8 +23,8 @@ local function nationalitySpawn(ply)
     local mexicanSpawn = util.JSONToTable( "nationality/" .. game.GetMap() .. "_mex.txt" )
     local americanSpawn = util.JSONToTable( "nationality/" .. game.GetMap() .. "_am.txt" )
 
-    if not file.Exists( "nationality/" .. game.GetMap() .. "_mex.txt", "DATA" ) then return end
-    if not file.Exists( "nationality/" .. game.GetMap() .. "_am.txt", "DATA" ) then return end
+    if not file.Exists( mexicanSpawn, "DATA" ) then return end
+    if not file.Exists( americanSpawn, "DATA" ) then return end
 
     if ply:IsValid() and ply:IsPlayer() then
         ply:SetNWFloat("Nation", userDataContents)
@@ -55,7 +55,7 @@ end
 hook.Add("PlayerSpawn", "NationalitySpawnOnRightSide", spawnOnRightSide)
 
 --Handle saving and loading of slots
-hook.Add("PlayerSay", "HandleBDONCommands" , function(ply, text)
+hook.Add("PlayerSay", "NationalityCommands" , function(ply, text)
 	if string.sub(string.lower(text), 1, 12) == "/addmexspawn" then
 		if ply:IsSuperAdmin() then
 			addMexSpawn(ply)
