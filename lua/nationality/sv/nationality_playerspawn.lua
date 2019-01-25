@@ -21,7 +21,7 @@ local function nationalitySpawn(ply)
 
     if not file.Exists( mexicanSpawn, "DATA" ) then return end
     if not file.Exists( americanSpawn, "DATA" ) then return end
-    
+
     local userDataFile = "nationality/" ..  ply:SteamID64() .. ".txt" 
     local userDataContents = file.Read(userDataFile, "DATA")
     local mexicanSpawn = file.Read( "nationality/" .. game.GetMap() .. "_mex.txt", "DATA" )
@@ -35,9 +35,9 @@ local function nationalitySpawn(ply)
     if file.Exists( userDataFile, "DATA" ) then
         if ply:IsValid() and ply:IsPlayer() then
             if tonumber(userDataContents, 2)  == NATION_MEX then
-                timer.Simple(0.5, function() ply:SetPos( mexicanSpawn[math.random( table.Count( mexicanSpawn ) ) ] ) end )
+                timer.Simple(0.5, function() ply:SetPos( mexicanSpawn[math.random( #mexicanSpawn ) ] ) end )
             else
-                timer.Simple(0.5, function() ply:SetPos( americanSpawn[math.random( table.Count( americanSpawn ) ) ] ) end )
+                timer.Simple(0.5, function() ply:SetPos( americanSpawn[math.random( #americanSpawn ) ] ) end )
             end
         end
     end
