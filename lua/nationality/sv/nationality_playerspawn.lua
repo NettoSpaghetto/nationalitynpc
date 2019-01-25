@@ -20,13 +20,12 @@ end
 local function nationalitySpawn(ply)
     local userDataFile = "nationality/" ..  ply:SteamID64() .. ".txt" 
     local userDataContents = file.Read(userDataFile, "DATA")
-    local mexicanSpawn = util.JSONToTable(nation.mex)
-    local americanSpawn = util.JSONToTable(nation.am)
+    local mexicanSpawn = util.JSONToTable("nationality/"..game.GetMap().."_mex.txt")
+    local americanSpawn = util.JSONToTable("nationality/"..game.GetMap().."_am.txt")
 
     if not file.Exists( "nationality/"..game.GetMap().."_mex.txt", "DATA" ) then return end
     if not file.Exists( "nationality/"..game.GetMap().."_am.txt", "DATA" ) then return end
 
-    local mexicanSpawn = util.JSONToTable(nation.mex)
     if ply:IsValid() and ply:IsPlayer() then
         ply:SetNWFloat("Nation", userDataContents)
     end
