@@ -25,13 +25,13 @@ end
 
 local function deleteSpawns( ply )
 
-    if not file.Exists( "nationality/"..game.GetMap().."_mex.txt", "DATA" ) then 
-        return ply:ChatPrint( "No spawn points have been saved!" ) 
+    if !file.Exists( "nationality/" .. game.GetMap() .. "_mex.txt", "DATA" ) then 
+        ply:ChatPrint( "No spawn points have been saved!" ) 
     else
-        return ply:ChatPrint( "Spawn points for" .. game.GetMap() .. "deleted!" )
-
-    file.Delete( "nationality/" .. game.GetMap() .. "_mex.txt" )
-    file.Delete( "nationality/" .. game.GetMap() .. "_am.txt" )
+        ply:ChatPrint( "Spawn points for " .. game.GetMap() .. " deleted!" )
+        file.Delete( "nationality/" .. game.GetMap() .. "_mex.txt" )
+        file.Delete( "nationality/" .. game.GetMap() .. "_am.txt" )
+    end
 
 end
 
@@ -77,10 +77,9 @@ end
 
 hook.Add("PlayerSpawn", "NationalitySpawnOnRightSide", spawnOnRightSide)
 
---Handle saving and loading of slots
 hook.Add("PlayerSay", "NationalityCommands" , function( ply, text )
 
-	if string.sub( string.lower( text ), 1, 12 ) == "/addmexspawn" then
+	if string.lower( text ) == "/addmexspawn" then
 		if ply:IsSuperAdmin() then
 			addMexSpawn( ply )
 			ply:ChatPrint("A Mexican spawn has been added for the map " .. game.GetMap() .. "!")
@@ -90,7 +89,7 @@ hook.Add("PlayerSay", "NationalityCommands" , function( ply, text )
         return ""
     end
     
-	if string.sub( string.lower( text ), 1, 11 ) == "/addamspawn" then
+	if string.lower( text ) == "/addamspawn" then
 		if ply:IsSuperAdmin() then
 			addAmSpawn( ply )
 			ply:ChatPrint("An American spawn has been added for the map " .. game.GetMap() .. "!")
@@ -100,7 +99,7 @@ hook.Add("PlayerSay", "NationalityCommands" , function( ply, text )
         return ""
     end
     
-	if string.sub( string.lower( text ), 1, 14 ) == "/savenatspawns" then
+	if string.lower( text ) == "/savenatspawns" then
 		if ply:IsSuperAdmin() then
 			saveSpawns()
 			ply:ChatPrint("You have successfully saved spawns for the map " .. game.GetMap() .. "!")
@@ -110,7 +109,7 @@ hook.Add("PlayerSay", "NationalityCommands" , function( ply, text )
         return ""
     end
     
-	if string.sub( string.lower( text ), 1, 14 ) == "/deletenatspawns" then
+	if string.lower( text ) == "/deletenatspawns" then
 		if ply:IsSuperAdmin() then
 			deleteSpawns( ply )
 		else
@@ -120,4 +119,3 @@ hook.Add("PlayerSay", "NationalityCommands" , function( ply, text )
     end
     
 end)
-
