@@ -19,13 +19,13 @@ end
 
 local function nationalitySpawn(ply)
 
-    if not file.Exists( mexicanSpawn, "DATA" ) then return end
-    if not file.Exists( americanSpawn, "DATA" ) then return end
+    if not file.Exists( "nationality/"..game.GetMap().."_mex.txt", "DATA" ) then return end
+    if not file.Exists( "nationality/"..game.GetMap().."_am.txt", "DATA" ) then return end
 
     local userDataFile = "nationality/" ..  ply:SteamID64() .. ".txt" 
     local userDataContents = file.Read(userDataFile, "DATA")
     local mexicanSpawn = file.Read( "nationality/" .. game.GetMap() .. "_mex.txt", "DATA" )
-    local americanSpawn = util.JSONToTable( "nationality/" .. game.GetMap() .. "_am.txt" )
+    local americanSpawn = file.Read( "nationality/" .. game.GetMap() .. "_am.txt", "DATA" )
     mexicanSpawn = util.JSONToTable( mexicanSpawn )
     americanSpawn = util.JSONToTable( americanSpawn )
 
