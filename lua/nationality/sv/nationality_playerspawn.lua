@@ -23,8 +23,8 @@ local function nationalitySpawn(ply)
     local mexicanSpawn = util.JSONToTable( "nationality/" .. game.GetMap() .. "_mex.txt" )
     local americanSpawn = util.JSONToTable( "nationality/" .. game.GetMap() .. "_am.txt" )
 
-    if not file.Exists( " nationality/" .. game.GetMap() .. "_mex.txt", "DATA" ) then return end
-    if not file.Exists( " nationality/" .. game.GetMap() .. "_am.txt", "DATA" ) then return end
+    if not file.Exists( "nationality/" .. game.GetMap() .. "_mex.txt", "DATA" ) then return end
+    if not file.Exists( "nationality/" .. game.GetMap() .. "_am.txt", "DATA" ) then return end
 
     if ply:IsValid() and ply:IsPlayer() then
         ply:SetNWFloat("Nation", userDataContents)
