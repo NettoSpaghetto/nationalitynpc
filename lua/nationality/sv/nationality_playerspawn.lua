@@ -1,14 +1,14 @@
 NATION_AM = 0
 NATION_MEX = 1
-local nation = {}
+nation = nation or {}
+nation.mex = nation.mex or {}
+nation.am = nation.am or {}
 
 local function addMexSpawn(ply)
-	nation.mex = {}
 	table.insert(nation.mex, {pos = ply:GetPos()})
 end
 
 local function addAmSpawn(ply)
-	nation.am = {}
 	table.insert(nation.am, {pos = ply:GetPos()})
 end
 
@@ -57,6 +57,7 @@ hook.Add("PlayerSay", "HandleBDONCommands" , function(ply, text)
 		else
 			ply:ChatPrint("You do not have permission to perform this action.")
 		end
+        return ""
 	end
 	if string.sub(string.lower(text), 1, 11) == "/addamspawn" then
 		if ply:IsSuperAdmin() then
@@ -65,6 +66,7 @@ hook.Add("PlayerSay", "HandleBDONCommands" , function(ply, text)
 		else
 			ply:ChatPrint("You do not have permission to perform this action.")
 		end
+        return ""
 	end
 	if string.sub(string.lower(text), 1, 14) == "/savenatspawns" then
 		if ply:IsSuperAdmin() then
@@ -73,6 +75,7 @@ hook.Add("PlayerSay", "HandleBDONCommands" , function(ply, text)
 		else
 			ply:ChatPrint("You do not have permission to perform this action.")
 		end
+        return ""
 	end
 end)
 
