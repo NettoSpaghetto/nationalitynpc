@@ -1,8 +1,10 @@
-NATION_AM = 0
-NATION_MEX = 1
 nation = nation or {}
 nation.mex = nation.mex or {}
 nation.am = nation.am or {}
+nation.enums = nation.enums or {}
+
+nation.enums["American"] = 0
+nation.enums["Mexican"] = 1
 
 local function addMexSpawn( ply )
 
